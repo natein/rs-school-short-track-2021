@@ -12,8 +12,11 @@
  * For 00-1B-63-84-45-E6, the output should be true.
  *
  */
-function isMAC48Address(/* n */) {
-  throw new Error('Not implemented');
+function isMAC48Address(n) {
+  const arr = n.split('-');
+  if (arr.length !== 6) return false;
+  const regexp = new RegExp(/[0-9a-fA-F]{2}/);
+  return arr.every((item) => item.length === 2 && item.match(regexp) !== null);
 }
 
 module.exports = isMAC48Address;
